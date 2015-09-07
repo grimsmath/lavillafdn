@@ -1,0 +1,47 @@
+<!-- Marketing messaging and featurettes -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div style="background-color: #cadde7">
+	<div class="container marketing">
+		<!-- Three columns of text below the carousel -->
+		<div class="row">
+			<div class="col-lg-4">
+				{embed="home/.events"}
+			</div>
+
+			<div class="col-lg-4">
+				{embed="home/.social_king"}
+			</div>
+
+			<div class="col-lg-4">
+				{embed="home/.social_pendry"}
+			</div>
+		</div><!-- // .row -->
+	</div> <!-- // .container -->
+</div>
+
+<script>
+    var cfg_king = {
+        "id": '364817728718139392',
+        "domId": 'king-twitter',
+        "maxTweets": 4,
+        "enableLinks": true,
+        "showUser": false,
+        "showTime": true,
+        "showInteraction": false,
+        "lang": 'en'
+    };
+    twitterFetcher.fetch(cfg_king);
+
+    var cfg_pendry = {
+        "id": '364831425091997696',
+        "domId": 'pendry-twitter',
+        "maxTweets": 4,
+        "enableLinks": true,
+        "showUser": false,
+        "showTime": true,
+        "showInteraction": false,
+        "lang": 'en'
+    };
+    twitterFetcher.fetch(cfg_pendry);
+</script>

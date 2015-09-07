@@ -1,0 +1,32 @@
+{preload_replace:my_page_title="Music Library"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+	
+	<div class="container" style="padding-top: 70px">
+		<div class="col-lg-12">
+			<div class="row">
+			  <div class="jumbotron">
+			    <h1 class="text-center">LaVilla Foundation Music Library</h1>
+			  </div>
+			  
+				<div class="col-lg-4 col-lg-offset-1">
+  				<a href="{path='music/allstate'}" class="btn btn-default btn-lg btn-block">
+  				  <h3 class="text-center">All-State Music</h3>
+  				  <span class="glyphicon glyphicon-music"></span>
+  				</a>
+				</div>
+				
+        <div class="col-lg-4 col-lg-offset-2">
+          <a href="{path='music/other'}" class="btn btn-default btn-lg btn-block">
+            <h3 class="text-center">Other Music</h3>
+          </a>
+        </div>
+			</div>
+		</div>
+	</div>
+	
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}

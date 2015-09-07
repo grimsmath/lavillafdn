@@ -1,0 +1,75 @@
+.tiny {
+	font-size: 10px;
+}
+
+.user,
+.delete,
+.asset,
+.download,
+.folder { 
+	padding: 2px 0 2px 22px;
+	white-space: nowrap;
+}
+
+.user {
+	background: url(../images/user.png) no-repeat 0 0;
+}
+
+.download {
+	background: url(../images/arrow_down.png) no-repeat 0 0;
+}
+
+.delete {
+	background: url(../images/delete.png) no-repeat 0 0;
+}
+
+.asset {
+	background: url(../images/document.png) no-repeat 0 0;
+}
+
+.folder {
+	background: url(../images/folder.png) no-repeat 0 0;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+select#assets {
+	display: none;
+}
+
+.dnd_list_container {
+	float: left;
+	width: 40%;
+	margin-right: 20px;
+}
+
+.dnd_list_container label {
+	line-height: 24px;
+}
+
+.dnd_list {
+	border: 1px solid #B6C0C2;
+	height: 160px;
+	overflow: auto;
+	background: white;
+	padding: 2px;
+	margin-bottom: 4px;
+}
+
+.dnd_list li {
+	padding: 4px 4px 4px 24px;
+	background-position: 4px 3px;
+	cursor: auto;
+}
+
+.dnd_list .highlight {
+	color: grey;
+	border: 1px dotted grey;
+	background-color: white;
+}
+
+textarea {
+	height: 60px;
+}

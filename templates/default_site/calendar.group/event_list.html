@@ -1,0 +1,21 @@
+{exp:calendar:events
+	orderby="{segment_4}"
+    sort="asc"
+    date_range_start="{segment_3}"
+    dynamic="off"}
+ 
+{if calendar_no_results}
+	<li>No Results</li>
+{/if}
+
+<div class="panel">
+    <a href="{path='calendar/event'}/{event_id}/">
+        <div class="panel-heading">{event_title}</div>
+    </a>
+    <ul>
+	{occurrences}
+        <li>{occurrence_start_date format="%l, %F %j, %Y at %g:%i%a"}</li>
+    {/occurrences}
+    </ul>
+</div>
+{/exp:calendar:events}

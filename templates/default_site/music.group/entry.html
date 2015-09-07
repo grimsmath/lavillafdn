@@ -1,0 +1,57 @@
+{preload_replace:my_page_title="All-State Music Library"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+	
+	<div class="container" style="padding-top: 70px">
+	  <div class="row">
+	    <div class="col-lg-12">
+	      {exp:channel:entries}
+	      <div class="panel panel-primary">
+	        <div class="panel-heading clearfix">
+	          <h4 class="panel-title pull-left">
+	            {title}
+	          </h4>
+	          <a href="{path='music/download/{entry_id}/'}" class="btn btn-xs btn-primary pull-right">Download All</a>
+	        </div>
+	        <div class="panel-body">
+	          <h4>Music Files</h4>
+	          <table class="table table-hover table-striped">
+	            <thead>
+	              <tr>
+  	              <th>Song Title</th>
+                  <th>Download</th>
+	              </tr>
+	            </thead>
+	            <tbody>
+              {exp:channel_files:files entry_id="{entry_id}"}
+                <tr>
+                  <td>{file:title}</td>
+                  <td>
+                    <a href="{file:locked_url}" title="{file:title}" class="btn btn-xs btn-default">
+                      <span class="glyphicon glyphicon-play"></span>Download
+                    </a>
+                  </td>
+                </tr>
+              {/exp:channel_files:files}
+	            </tbody>
+	            <tbody>
+	              <tr>
+  	              <th>Song Title</th>
+                  <th>Download</th>
+	              </tr>
+	            </tbody>	            
+	          </table>
+	        </div>
+	        <div class="panel-footer">
+	        </div>
+	      </div>
+	      {/exp:channel:entries}
+	    </div>
+	  </div>
+	</div>
+		
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}	    

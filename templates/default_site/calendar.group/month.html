@@ -1,0 +1,103 @@
+{preload_replace:my_page_title="Calendar"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+{snip_body_margin}
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+	<style>
+		#fc_calendar {
+			background: #fff;
+			font-size: 12px;
+			font-family: Helvetica, "lucida sans", arial, verdana;
+		}
+				
+		#fc_outer th, 
+		#fc_inner th {
+			text-align: center;
+		}
+
+		#fc_inner td {
+			height: 150px
+		}
+		
+		#fc_celander table table .event a {
+			color: #009966;
+			text-decoration: underline;
+		}
+	
+		#fc_calendar .date {
+			background: transparent;
+		}
+		
+		#fc_calendar .num {
+			border-bottom: solid 1px;
+			display: block;
+			padding-left: 5px;
+			margin: 0
+		}
+		#fc_calendar .out_of_range { background-color: #ecf0f1; }
+		#fc_calendar .has_events { background-color: yellow; color: #f00; }
+		
+		.day_of_week {
+			background: #acd5f0;
+		}
+		
+		#fc_outer thead tr th {
+			border-bottom: none
+		}
+	</style>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h4 class="panel-title">Foundation Calendar</h4>
+					</div>
+					<div class="panel-body">
+						<div id="fc_calendar">
+							{exp:calendar:month
+								{if segment_3}
+									date_range_start="{segment_3}-{segment_4}-01"
+								{/if}
+							}
+							<li class="alert alert-info" style="padding: 2px 5px; margin: 5px 0; list-style-type: none">
+								<a href="{path='calendar/event'}/{event_id}/" style="text-decoration: none; display: block">
+									{event_title}
+								</a>
+							</li>
+							{/exp:calendar:month}
+						</div> <!-- // #fc_calendar -->
+					</div>
+					<div class="panel-footer">
+						<a href="#" class="btn btn-primary btn-sm">Help</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> <!-- // .col-lg-12 -->
+
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}
+
+<script type="text/javascript">
+	$(function () {
+		$('#fc_outer').addClass("table");
+		$('#fc_inner').addClass("table table-bordered");
+		
+		var table = $('#fc_outer'),
+            tWidth = table.width(),
+            firstColumnWidth = table.find('th:first').width(),
+            cols = table.find('th'),
+            colWidth = (tWidth - firstColumnWidth) / cols.size();
+
+        cols.width(colWidth);
+        
+		var table = $('#fc_inner'),
+            tWidth = table.width(),
+            firstColumnWidth = table.find('th:first').width(),
+            cols = table.find('th'),
+            colWidth = (tWidth - firstColumnWidth) / cols.size();
+
+        cols.width(colWidth);
+	})
+</script>

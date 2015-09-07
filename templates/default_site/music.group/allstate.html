@@ -1,0 +1,38 @@
+{preload_replace:my_page_title="All-State Music Library"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+	
+	<div class="container" style="padding-top: 70px">
+	  <div class="row">
+	    <div class="col-lg-12">
+	      <div class="jumbotron">
+	        <h2>All-State Chorus Music</h2>
+	      </div>
+	    </div>
+	  </div>
+	  
+	  <div class="row">
+  	  {exp:channel:categories category_group="12" style="linear"}     
+	    <div class="col-lg-6">
+	      <div class="panel panel-primary">
+	        <div class="panel-heading">
+	          <h4 class="panel-title">{category_name}</h4>
+	        </div>
+	        <div class="panel-body">
+	          <ul>
+	          {exp:channel:entries channel="music_library" category="{category_id}" orderby="entry_id"}
+	            <li><a href="{permalink='music/entry'}">{title}</a></li>
+	          {/exp:channel:entries}
+	          </ul>
+          </div>
+	      </div>
+	    </div>
+	    {/exp:channel:categories}
+	  </div>
+	</div>
+		
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}

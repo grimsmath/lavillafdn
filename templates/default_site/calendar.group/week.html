@@ -1,0 +1,68 @@
+{preload_replace:my_page_title="Week | Calendar"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+{snip_body_margin}
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+	<link rel="stylesheet" type="text/css" href="/themes/third_party/calendar/templates/week.css" />
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				{exp:calendar:cal 
+				    enable="custom_fields" 
+				    pad_short_weeks="y" 
+				    {if segment_3 == ''}
+				        date_range_start="0 weeks begin"
+				    {/if}
+				    {if segment_3 != ''}
+				        date_range_start="{segment_3}-{segment_4}-{segment_5}"
+				        date_range_end="{segment_3}-{segment_4}-{segment_5}"
+				    {/if}}
+				    {display_each_week}
+				        <div class="header">
+				            <div style="float: left; width: 20%;"> 
+				                <a href="{path='calendar/week'}/{prev_week format="%Y/%m/%d"}/">Last Week</a>
+				            </div>
+				            <div style="float: left; width: 60%; text-align: center;">
+				                <h1>Week of {date format="%l, %F %d, %Y"}</h1>
+				            </div>
+				            <div style="float: right; text-align: right; width: 20%;">
+				                <a href="{path='calendar/week'}/{next_week format="%Y/%m/%d"}/">Next Week</a>
+				            </div>
+				            <br style="clear: both;" />
+				        </div>
+				        {display_each_day}
+				        <div class="day">
+				            <h2>
+				                <a href="{path='calendar/day'}/{date format="%Y/%m/%d"}/">
+				                    {date format="%l, %F %j, %Y"}
+				                </a>
+				            </h2>
+				            <ul>
+				            {if day_event_total == 0}
+				                <li>No events today.</li>
+				            {/if}
+				            {events}
+				                <li class="event">
+				                    <a href="{path='calendar/events'}/{event_id}/">
+				                        {event_title}
+				                    </a>
+				                    {if event_all_day}
+				                        (All day!)
+				                    {if:else}
+				                        {event_start_date format="%g:%i%a"} - 
+				                        {event_end_date format="%g:%i%a"}
+				                    {/if}            
+				                </li>         
+				            {/events}
+				            </ul>
+				        </div>   
+				        {/display_each_day}
+				    {/display_each_week}
+				{/exp:calendar:cal}
+			</div>
+		</div>
+	</div>	
+
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}

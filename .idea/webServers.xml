@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="e785f0ef-0315-4d2f-a9b8-7abd28fcbe3a" name="Gryphon LaVilla" url="http://www.lavillafoundation.org">
+        <fileTransfer host="www.lavillafoundation.org" port="22" rootFolder="/usr/share/nginx/lavillafoundation.org" accessType="SFTP" password="dfccdfcbdfc6dfc1dfc3dfd8dfc1df9b" username="dking">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

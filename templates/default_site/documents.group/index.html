@@ -1,0 +1,83 @@
+{preload_replace:my_page_title="Documents"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+
+{snip_body_margin}
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+
+	<div class="container">
+		<div class="col-md-3">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">Table of Contents</h4>
+				</div>
+				<div class="panel-body">
+					<ul class="nav nav-pills nav-stacked" id="document_tabs">
+						{exp:channel:categories channel="documents" category_group="5" style="linear" show_empty="yes"}
+						<li>
+							<a href="#tab_{cat_id}" data-toggle="pill">{category_name}</a>
+						</li>
+						{/exp:channel:categories}
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h4 class="panel-title">Document Group</h4>
+				</div>
+				<div class="panel-body">
+					<div class="tab-content">
+						{exp:channel:categories channel="documents" category_group="5" style="linear" show_empty="yes"}
+						<div class="tab-pane" id="tab_{cat_id}">
+							<table class="table table-hover table-striped">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>File Type</th>
+										<th>Created</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									{exp:channel:entries channel="documents" category="{category_id}" orderby="document_academic_calendar"}
+									<tr>
+										<td>
+											{exp:gwcode_categories entry_id="{entry_id}" group_id="7" style="linear"}
+												{if cat_id=="53"}
+													<i class="fa fa-file-word-o"></i>&nbsp;
+												{if:elseif cat_id=="54"}
+													<i class="fa fa-file-excel-o"></i>&nbsp;
+												{if:elseif cat_id=="57"}
+													<i class="fa fa-file-acrobat-o"></i>&nbsp;
+												{/if}
+											{/exp:gwcode_categories}
+											<a href="{permalink='documents/entry'}">{title}</a>
+										</td>
+										<td>
+											{exp:gwcode_categories entry_id="{entry_id}" group_id="7" style="linear"}
+												{cat_name}
+											{/exp:gwcode_categories}
+										</td>
+										<td>{entry_date format="%Y-%m-%d"}</td>
+										<td><i class="fa fa-download"></i></td>
+									</tr>
+									{/exp:channel:entries}
+								</tbody>
+							</table>
+						</div>
+						{/exp:channel:categories}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		$(function() {
+			$('#document_tabs a:first').tab('show')
+		})
+	</script>
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}

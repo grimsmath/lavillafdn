@@ -1,0 +1,57 @@
+{preload_replace:my_page_title="Day | Calendar"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+{snip_body_margin}
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+	<link rel="stylesheet" type="text/css" href="/themes/third_party/calendar/templates/day.css" />
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+			{exp:calendar:day
+			    {if segment_3}
+			        date_range_start="{segment_3}-{segment_4}-{segment_5}"
+			    {/if}}
+			    <div class="event">
+			        <div class="head">
+			            <h2>
+			                <a href="{path='calendar/event'}/{event_id}/">
+			                    {event_title}
+			                </a>
+			            </h2>
+			            {if event_all_day}
+			                <p>
+			                    {event_start_date format="%Y-%m-%d"}
+			                    {if event_end_date}
+			                        - {event_end_date format="%Y-%m-%d"}
+			                    {/if}
+			                </p>
+			            {if:else}
+			                <p>
+			                    {event_start_date format="%Y-%m-%d %H:%i"}
+			                    {if event_end_date}
+			                        - {event_end_date format="%Y-%m-%d %H:%i"}
+			                    {/if}
+			                </p>
+			            {/if}
+			            <p>
+			                From calendar:
+			                <a href="{path='calendar/index'}/{event_calendar_id}/">
+			                    {event_calendar_title}
+			                </a>
+			            </p>
+			        </div>
+			        <div class="body">
+			            <p>
+			                Details: {event_summary}<br />      
+			                Location: {event_location}
+			            </p>
+			        </div>
+			    </div>
+			{/exp:calendar:day}
+			</div>
+		</div>
+	</div>
+	
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}

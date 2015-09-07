@@ -1,0 +1,43 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h4 class="panel-title">Upcoming Events</h4>
+	</div>
+	<div class="panel-body">
+		<p>The following events are coming soon!</p>
+	</div>
+	<div class="list-group" style="text-align: left">
+		{exp:calendar:cal
+			date_range_start="today"
+			show_months="2"
+			category="not 69"
+			event_limit="5"
+			sort="asc"
+			dynamic="off"}
+		<a class="list-group-item" href="{path='calendar/event'}/{event_id}/">
+			{exp:char_limit total="20"}{event_title}{/exp:char_limit}<span class="badge">{event_start_date format="%M %j, %Y"}</span>
+		</a>
+		{/exp:calendar:cal}
+	</div>
+	<div class="panel-footer">
+		<a class="btn btn-default" href="#">View more &raquo;</a>
+	</div>
+</div><!-- // .col-lg-4 -->
+
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h4 class="panel-title">Foundation Documents</h4>
+	</div>
+	<div class="panel-body">
+		Here are some commonly requested documents...
+	</div>
+	<div class="list-group" style="text-align: left">
+		{exp:gwcode_categories limit="5" style="linear" status="open|approved" start_on="2015-08-01"}
+		<a class="list-group-item" href="{path='documents/index'}/">
+			{cat_name}<span class="badge">{entry_count}</span>
+		</a>
+		{/exp:gwcode_categories}
+	</div>
+	<div class="panel-footer">
+		<a class="btn btn-default" href="#">View more &raquo;</a>
+	</div>
+</div><!-- // .col-lg-4 -->

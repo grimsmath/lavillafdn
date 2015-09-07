@@ -1,0 +1,64 @@
+{preload_replace:my_page_title="Calendar"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+{snip_body_margin}
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+
+	<div class="container">
+		{if segment_3 != 'list'}
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="btn-group" data-toggle="buttons">
+					<button type="button" class="btn btn-primary" disabled="disabled">Calendar Sorting</button>
+				  	<label class="btn btn-primary">
+				    	<input type="radio" name="options" id="SortByEvent" selected>By Event</input>
+				  	</label>
+				  	<label class="btn btn-primary">
+				    	<input type="radio" name="options" id="SortByDate">By Date</input>
+				 	 </label>
+				</div>
+			</div>
+		</div>
+		{/if}
+		<div class="row">
+			<div class="col-lg-12">
+				<div id="calendar">
+					{if segment_3 == 'list'}
+						<ul>
+						{exp:calendar:year_list 
+							date_range_start="2009-08-24"
+						    date_range_end="2015-12-last"
+						    limit="100"}
+						    <li>
+						        <a href="{path='calendar/year'}/{year format="%Y"}/">
+						            {year format="%Y"}
+						        </a>
+						    </li>
+						{/exp:calendar:year_list}
+						</ul>
+					{/if}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}
+
+<script type="text/javascript">
+	$(function() {
+		$('#SortByEvent').change(function () {
+			if ($('#SortByEvent').is(':checked')) {
+				$('#calendar').load('/calendar/event_list/{segment_3}/title/')
+			}
+		})
+		
+		$('#SortByDate').change(function () {
+			if ($('#SortByDate').is(':checked')) {
+				$('#calendar').load('/calendar/event_list/{segment_3}/date/')
+			}
+		})
+		
+	});
+</script>

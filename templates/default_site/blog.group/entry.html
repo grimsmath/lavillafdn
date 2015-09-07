@@ -1,0 +1,46 @@
+{exp:channel:entries "weblog_default"}
+	
+{preload_replace:my_page_title="{title} | Blog"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+				    	{title}
+				  </div>
+				  <div class="panel-body">
+		   			<dl class="dl-horizontal">
+		   				<dt>Content</dt>
+							<dd class="well">{weblog_body}</dd>
+							
+							<dt>Academic Calendar</dt>
+							{related_entries id="blog_academic_calendar"}
+								<dd>{title}</dd>
+							{/related_entries}
+							<dt>Last Updated</dt>
+							<dd>{edit_date format="%m-%d-%Y"}</dd>
+							
+							<dt>Author</dt>
+							<dd>{screen_name}</dd>
+		   			</dl>
+				  </div>
+	   			<div class="panel-footer">
+						<a class="btn btn-sm btn-primary" href="{path='blog'}">
+							Back to Blog Postings
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}
+
+{/exp:channel:entries}

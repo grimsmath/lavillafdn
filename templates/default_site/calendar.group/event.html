@@ -1,0 +1,62 @@
+{preload_replace:my_page_title="Events | Calendar"}
+{embed="partials/site_html_head" page_title="{my_page_title}"}
+{snip_body_margin}
+{snip_body_open}	
+	{embed="partials/site_nav_top"}
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				{exp:calendar:events
+				    orderby="title"
+				    sort="asc"
+				    event_id="{segment_3}"}
+				 
+				    {if calendar_no_results}
+				        <div class="panel">No Results</div>
+				    {/if}
+				    
+				    <div class="panel panel-primary">
+				        <div class="panel-heading">
+				        	{event_title}
+				        </div>
+				        <p>
+				        	{if event_instructions != ""}
+				        		{event_instructions}
+				        	{if:else}
+				        		<em>No details provided</em>
+				        	{/if}
+				        </p>
+						<ul class="list-group">
+							<li class="list-group-item">
+								<dl class="dl-horizontal">
+									<dt>Location</dt>
+									<dd>{event_location}</dd>
+									<hr />
+									<dt>Occurrences</dt>
+									<dd>
+					            		{occurrences}
+					            			<div>
+						            			{occurrence_start_date format="%l, %F %j, %Y at %g:%i%a"}
+						            			&nbsp;&mdash;&nbsp;
+							               		{occurrence_end_date format="%l, %F %j, %Y at %g:%i%a"}
+						               		</div>
+					            		{/occurrences}
+					            	</dd>
+			            		</dl>
+							</li>
+						</ul>
+						<div class="panel-footer">
+							<a class="btn btn-sm btn-primary" href="{path='calendar/month'}">
+								Back to Calendar
+							</a>
+						</div>
+					</div>
+				{/exp:calendar:events}
+			</div>
+		</div>
+	</div>
+
+	{embed="partials/site_footer"}
+	{embed="partials/site_body_javascript"}
+{snip_body_close}
