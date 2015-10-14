@@ -15,7 +15,7 @@
 					<ul class="nav nav-pills nav-stacked" id="document_tabs">
 						{exp:channel:categories channel="documents" category_group="5" style="linear" show_empty="yes"}
 						<li>
-							<a href="#tab_{cat_id}" data-toggle="pill">{category_name}</a>
+							<a href="#tab_{category_id}" data-toggle="pill">{category_name}</a>
 						</li>
 						{/exp:channel:categories}
 					</ul>
@@ -30,7 +30,7 @@
 				<div class="panel-body">
 					<div class="tab-content">
 						{exp:channel:categories channel="documents" category_group="5" style="linear" show_empty="yes"}
-						<div class="tab-pane" id="tab_{cat_id}">
+						<div class="tab-pane" id="tab_{category_id}">
 							<table class="table table-hover table-striped">
 								<thead>
 									<tr>
@@ -49,8 +49,6 @@
 													<i class="fa fa-file-word-o"></i>&nbsp;
 												{if:elseif cat_id=="54"}
 													<i class="fa fa-file-excel-o"></i>&nbsp;
-												{if:elseif cat_id=="57"}
-													<i class="fa fa-file-acrobat-o"></i>&nbsp;
 												{/if}
 											{/exp:gwcode_categories}
 											<a href="{permalink='documents/entry'}">{title}</a>
@@ -61,7 +59,7 @@
 											{/exp:gwcode_categories}
 										</td>
 										<td>{entry_date format="%Y-%m-%d"}</td>
-										<td><i class="fa fa-download"></i></td>
+										<td><a href="{document_file_upload}" class="btn btn-primary btn-xs"><i class="fa fa-download"></i>&nbsp;Download</a></td>
 									</tr>
 									{/exp:channel:entries}
 								</tbody>
